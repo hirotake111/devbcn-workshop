@@ -4,7 +4,7 @@ use shuttle_runtime::CustomError;
 use shuttle_shared_db::Postgres;
 use sqlx::Executor;
 
-use api_lib::health::{get_version, hello_world};
+use api_lib::health::health;
 
 #[shuttle_runtime::main]
 async fn actix_web(
@@ -17,7 +17,7 @@ async fn actix_web(
         .map_err(CustomError::new)?;
 
     let config = move |cfg: &mut ServiceConfig| {
-        cfg.app_data(pool).service(hello_world).service(get_version);
+        cfg.app_data(pool).service(health);
     };
 
     Ok(config.into())
