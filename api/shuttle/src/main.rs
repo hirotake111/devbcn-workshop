@@ -15,6 +15,7 @@ async fn hello_world() -> &'static str {
 
 #[get("/version")]
 async fn get_version(db: Data<sqlx::PgPool>) -> impl Responder {
+    tracing::info!("Getting version");
     let result: Result<String, sqlx::Error> = sqlx::query_scalar("SELECT version()")
         .fetch_one(db.get_ref())
         .await;
