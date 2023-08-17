@@ -1,4 +1,4 @@
-use actix_web::{get, HttpResponse, Responder};
+use actix_web::{web, HttpResponse, Responder};
 
 // #[get("/version")]
 // async fn get_version(db: web::Data<sqlx::PgPool>) -> impl Responder {
@@ -12,7 +12,10 @@ use actix_web::{get, HttpResponse, Responder};
 // }
 // }
 
-#[get("/health")]
+pub fn service(cfg: &mut web::ServiceConfig) {
+    cfg.route("/health", web::get().to(health));
+}
+
 async fn health() -> impl Responder {
     HttpResponse::Ok()
         .append_header(("version", "v0.0.1"))

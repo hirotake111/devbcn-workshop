@@ -4,8 +4,6 @@ use shuttle_runtime::CustomError;
 use shuttle_shared_db::Postgres;
 use sqlx::Executor;
 
-use api_lib::health::health;
-
 #[shuttle_runtime::main]
 async fn actix_web(
     #[Postgres] pool: sqlx::PgPool,
@@ -17,7 +15,7 @@ async fn actix_web(
         .map_err(CustomError::new)?;
 
     let config = move |cfg: &mut ServiceConfig| {
-        cfg.app_data(pool).service(health);
+        cfg.app_data(pool).configure(api_lib::health::service);
     };
 
     Ok(config.into())
