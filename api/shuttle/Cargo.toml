@@ -19,3 +19,4 @@ sqlx = { version = "0.7.1", features = [
 ] }
 shuttle-shared-db = { version = "0.24.0", features = ["postgres"] }
 tracing = "0.1"
+api-lib = { path = "../lib" }
