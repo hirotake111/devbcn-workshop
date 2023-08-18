@@ -6,7 +6,7 @@ pub struct PostgresFilmRepository {
 }
 
 impl PostgresFilmRepository {
-    fn new(pool: sqlx::PgPool) -> Self {
+    pub fn new(pool: sqlx::PgPool) -> Self {
         Self { pool }
     }
 }
