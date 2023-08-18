@@ -1,5 +1,13 @@
 A walk-through codebase of [Rust Full Stack Workshop](https://bcnrust.github.io/devbcn-workshop/index.html)
 
+```bash
+# Start local dev server
+make dev
+
+# Unit/integration tests
+make test
+```
+
 ### Debugging using Visual Studio Code
 
 Make sure that you have these two extensions installed on your editor:
