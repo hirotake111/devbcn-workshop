@@ -17,7 +17,7 @@ sqlx = { version = "0.7.1", features = [
 ] }
 tracing = "0.1"
 # shared
-shared = { path = "../../shared" }
+shared = { path = "../../shared", features = ["backend"] }
 # serde
 serde = "1.0"
 serde_json = "1.0"
