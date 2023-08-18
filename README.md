@@ -2,7 +2,7 @@ A walk-through codebase of [Rust Full Stack Workshop](https://bcnrust.github.io/
 
 ```bash
 # Start local dev server
-make dev
+make run
 
 # Unit/integration tests
 make test

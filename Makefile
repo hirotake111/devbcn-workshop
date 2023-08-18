@@ -1,5 +1,5 @@
 
-dev:
+run:
 	@cargo watch -x "shuttle run"
 
 test:
