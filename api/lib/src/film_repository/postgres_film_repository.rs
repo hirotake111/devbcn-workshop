@@ -33,6 +33,7 @@ impl FilmRepository for PostgresFilmRepository {
       WHERE id = $1
       "#,
         )
+        .bind(id)
         .fetch_one(&self.pool)
         .await
         .map_err(|e| e.to_string())
@@ -46,6 +47,10 @@ impl FilmRepository for PostgresFilmRepository {
           RETURNING id, title , director, year, poster, created_at, updated_at
       "#,
         )
+        .bind(&film.title)
+        .bind(&film.director)
+        .bind(film.year as i16)
+        .bind(&film.poster)
         .fetch_one(&self.pool)
         .await
         .map_err(|e| e.to_string())
